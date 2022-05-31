@@ -1,11 +1,11 @@
 <template>
     <div class="container shadow p-3 rounded-1">
-        <div v-for="color in colors" :key="color.id">
+        <div v-for="item in this.$store.state.colors" :key="item.color">
             <div class="row">
                 <div class="col">
-                    {{ color.name }}
+                    {{ item.color }}
                     <button
-                        @click="$emit('delete')"
+                        @click="deleteColor(item.color)"
                         type="button"
                         class="btn btn-primary"
                     >
@@ -23,9 +23,9 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
+                            <tr v-for="size in item.size" :key="size">
                                 <th scope="row">1</th>
-                                <td>Mark</td>
+                                <td>{{ size }}</td>
                                 <td>
                                     <input
                                         type="email"
@@ -37,48 +37,7 @@
                                 </td>
                                 <td>
                                     <button
-                                        type="button"
-                                        class="btn btn-primary"
-                                    >
-                                        Primary
-                                    </button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td>Mark</td>
-                                <td>
-                                    <input
-                                        type="email"
-                                        class="form-control"
-                                        id="exampleInputEmail1"
-                                        aria-describedby="emailHelp"
-                                        placeholder="Exclusive punjabi"
-                                    />
-                                </td>
-                                <td>
-                                    <button
-                                        type="button"
-                                        class="btn btn-primary"
-                                    >
-                                        Primary
-                                    </button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td>Mark</td>
-                                <td>
-                                    <input
-                                        type="email"
-                                        class="form-control"
-                                        id="exampleInputEmail1"
-                                        aria-describedby="emailHelp"
-                                        placeholder="Exclusive punjabi"
-                                    />
-                                </td>
-                                <td>
-                                    <button
+                                        @click="deleteSize(item.color, size)"
                                         type="button"
                                         class="btn btn-primary"
                                     >
@@ -96,7 +55,37 @@
 
 <script>
 export default {
-    props: ["colors"],
-    emits: ["delete"],
+    methods: {
+        deleteColor(item) {
+            console.log(this.$store.state.colors);
+            this.$store.state.colors = this.$store.state.colors.filter(
+                (x) => x.color !== item
+            );
+            console.log(this.$store.state.colors);
+
+            // this.$store.commit("deleteColor", item);
+        },
+        deleteSize(color, size) {
+            // console.log(this.$store.state.colors);
+            // this.$store.state.colors = this.$store.state.colors.filter(
+            //     (x) => x.color !== item
+            // );
+            console.log(color + size);
+            for (
+                let index = 0;
+                index < this.$store.state.colors.length;
+                index++
+            ) {
+                if (this.$store.state.colors[index].color === color) {
+                    this.$store.state.colors[
+                        index
+                    ].size = this.$store.state.colors[index].size.filter(
+                        (x) => x !== size
+                    );
+                }
+            }
+            // this.$store.commit("deleteColor", item);
+        },
+    },
 };
 </script>

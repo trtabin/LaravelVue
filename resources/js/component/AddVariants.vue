@@ -5,192 +5,213 @@
             and size.
         </p>
 
-        <form>
-            <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label"
-                    >Color Family (example=Black,White,Navy etc.)*</label
-                >
-                <select class="form-select" aria-label="Default select example">
-                    <option>Select color</option>
-                    <option value="1">Green</option>
-                    <option value="2">Red</option>
-                    <option value="3">Blue</option>
-                </select>
-            </div>
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label"
+                >Color Family (example=Black,White,Navy etc.)*</label
+            >
+            <select
+                v-model="selected"
+                class="form-select"
+                aria-label="Default select example"
+            >
+                <option disabled value="">Select color</option>
+                <option value="Green">Green</option>
+                <option value="Red">Red</option>
+                <option value="Blue">Blue</option>
+                <option value="White">White</option>
+                <option value="Black">Black</option>
+            </select>
+        </div>
 
-            <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label"
-                    >Variant (Example=M,L,XL,38,,42 etc.)</label
-                >
-                <div class="row">
-                    <div class="col">
-                        <div class="form-check">
-                            <input
-                                class="form-check-input"
-                                type="checkbox"
-                                value=""
-                                id="flexCheckDefault"
-                            />
-                            <label
-                                class="form-check-label"
-                                for="flexCheckDefault"
-                            >
-                                XXXL
-                            </label>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="form-check">
-                            <input
-                                class="form-check-input"
-                                type="checkbox"
-                                value=""
-                                id="flexCheckDefault"
-                            />
-                            <label
-                                class="form-check-label"
-                                for="flexCheckDefault"
-                            >
-                                XXXL
-                            </label>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="form-check">
-                            <input
-                                class="form-check-input"
-                                type="checkbox"
-                                value=""
-                                id="flexCheckDefault"
-                            />
-                            <label
-                                class="form-check-label"
-                                for="flexCheckDefault"
-                            >
-                                XXXL
-                            </label>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="form-check">
-                            <input
-                                class="form-check-input"
-                                type="checkbox"
-                                value=""
-                                id="flexCheckDefault"
-                            />
-                            <label
-                                class="form-check-label"
-                                for="flexCheckDefault"
-                            >
-                                XXXL
-                            </label>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="form-check">
-                            <input
-                                class="form-check-input"
-                                type="checkbox"
-                                value=""
-                                id="flexCheckDefault"
-                            />
-                            <label
-                                class="form-check-label"
-                                for="flexCheckDefault"
-                            >
-                                XXXL
-                            </label>
-                        </div>
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label"
+                >Variant (Example=M,L,XL,38,,42 etc.)</label
+            >
+            <div class="row">
+                <div class="col">
+                    <div class="form-check">
+                        <input
+                            v-model="checkedSizes"
+                            class="form-check-input"
+                            type="checkbox"
+                            value="M"
+                            id="flexCheckDefault"
+                        />
+                        <label class="form-check-label" for="flexCheckDefault">
+                            M
+                        </label>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col">
-                        <div class="form-check">
-                            <input
-                                class="form-check-input"
-                                type="checkbox"
-                                value=""
-                                id="flexCheckDefault"
-                            />
-                            <label
-                                class="form-check-label"
-                                for="flexCheckDefault"
-                            >
-                                XXXL
-                            </label>
-                        </div>
+                <div class="col">
+                    <div class="form-check">
+                        <input
+                            v-model="checkedSizes"
+                            class="form-check-input"
+                            type="checkbox"
+                            value="L"
+                            id="flexCheckDefault"
+                        />
+                        <label class="form-check-label" for="flexCheckDefault">
+                            L
+                        </label>
                     </div>
-                    <div class="col">
-                        <div class="form-check">
-                            <input
-                                class="form-check-input"
-                                type="checkbox"
-                                value=""
-                                id="flexCheckDefault"
-                            />
-                            <label
-                                class="form-check-label"
-                                for="flexCheckDefault"
-                            >
-                                XXXL
-                            </label>
-                        </div>
+                </div>
+                <div class="col">
+                    <div class="form-check">
+                        <input
+                            v-model="checkedSizes"
+                            class="form-check-input"
+                            type="checkbox"
+                            value="XL"
+                            id="flexCheckDefault"
+                        />
+                        <label class="form-check-label" for="flexCheckDefault">
+                            XL
+                        </label>
                     </div>
-                    <div class="col">
-                        <div class="form-check">
-                            <input
-                                class="form-check-input"
-                                type="checkbox"
-                                value=""
-                                id="flexCheckDefault"
-                            />
-                            <label
-                                class="form-check-label"
-                                for="flexCheckDefault"
-                            >
-                                XXXL
-                            </label>
-                        </div>
+                </div>
+                <div class="col">
+                    <div class="form-check">
+                        <input
+                            v-model="checkedSizes"
+                            class="form-check-input"
+                            type="checkbox"
+                            value="XXL"
+                            id="flexCheckDefault"
+                        />
+                        <label class="form-check-label" for="flexCheckDefault">
+                            XXL
+                        </label>
                     </div>
-                    <div class="col">
-                        <div class="form-check">
-                            <input
-                                class="form-check-input"
-                                type="checkbox"
-                                value=""
-                                id="flexCheckDefault"
-                            />
-                            <label
-                                class="form-check-label"
-                                for="flexCheckDefault"
-                            >
-                                XXXL
-                            </label>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="form-check">
-                            <input
-                                class="form-check-input"
-                                type="checkbox"
-                                value=""
-                                id="flexCheckDefault"
-                            />
-                            <label
-                                class="form-check-label"
-                                for="flexCheckDefault"
-                            >
-                                XXXL
-                            </label>
-                        </div>
+                </div>
+                <div class="col">
+                    <div class="form-check">
+                        <input
+                            v-model="checkedSizes"
+                            class="form-check-input"
+                            type="checkbox"
+                            value="XXXL"
+                            id="flexCheckDefault"
+                        />
+                        <label class="form-check-label" for="flexCheckDefault">
+                            XXXL
+                        </label>
                     </div>
                 </div>
             </div>
+            <div class="row">
+                <div class="col">
+                    <div class="form-check">
+                        <input
+                            v-model="checkedSizes"
+                            class="form-check-input"
+                            type="checkbox"
+                            value="32"
+                            id="flexCheckDefault"
+                        />
+                        <label class="form-check-label" for="flexCheckDefault">
+                            32
+                        </label>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-check">
+                        <input
+                            v-model="checkedSizes"
+                            class="form-check-input"
+                            type="checkbox"
+                            value="44"
+                            id="flexCheckDefault"
+                        />
+                        <label class="form-check-label" for="flexCheckDefault">
+                            44
+                        </label>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-check">
+                        <input
+                            v-model="checkedSizes"
+                            class="form-check-input"
+                            type="checkbox"
+                            value="48"
+                            id="flexCheckDefault"
+                        />
+                        <label class="form-check-label" for="flexCheckDefault">
+                            48
+                        </label>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-check">
+                        <input
+                            v-model="checkedSizes"
+                            class="form-check-input"
+                            type="checkbox"
+                            value="36"
+                            id="flexCheckDefault"
+                        />
+                        <label class="form-check-label" for="flexCheckDefault">
+                            36
+                        </label>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-check">
+                        <input
+                            v-model="checkedSizes"
+                            class="form-check-input"
+                            type="checkbox"
+                            value="40"
+                            id="flexCheckDefault"
+                        />
+                        <label class="form-check-label" for="flexCheckDefault">
+                            40
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-            <button type="submit" class="btn btn-primary">
-                Add to color list
-            </button>
-        </form>
+        <button @click="add" type="submit" class="btn btn-primary">
+            Add to color list
+        </button>
     </div>
 </template>
+
+<script>
+export default {
+    data() {
+        return {
+            selected: "",
+            checkedSizes: [],
+            alreadySelected: false,
+        };
+    },
+    methods: {
+        add() {
+            for (
+                let index = 0;
+                index < this.$store.state.colors.length;
+                index++
+            ) {
+                if (this.$store.state.colors[index].color === this.selected) {
+                    this.alreadySelected = true;
+                }
+            }
+            if (this.selected && !this.alreadySelected) {
+                this.$store.commit("addColor", {
+                    color: this.selected,
+                    size: this.checkedSizes,
+                });
+            } else {
+                this.alreadySelected = false;
+            }
+            this.selected = "";
+            this.checkedSizes = [];
+            // console.log(this.$store.state.colors);
+            // console.log(this.checkedSizes);
+        },
+    },
+};
+</script>

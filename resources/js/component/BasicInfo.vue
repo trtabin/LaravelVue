@@ -8,7 +8,8 @@
                     >Product Name</label
                 >
                 <input
-                    type="email"
+                    v-model="productName"
+                    type="text"
                     class="form-control"
                     id="exampleInputEmail1"
                     aria-describedby="emailHelp"
@@ -97,3 +98,13 @@
         </form>
     </div>
 </template>
+
+<script>
+export default {
+    data() {
+        return {
+            productName: "",
+        };
+    },
+};
+</script>
