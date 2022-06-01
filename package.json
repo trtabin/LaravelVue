@@ -16,6 +16,7 @@
         "postcss": "^8.1.14"
     },
     "dependencies": {
+        "@vueup/vue-quill": "^1.0.0-beta.8",
         "vue": "^3.2.33",
         "vue-loader": "^17.0.0",
         "vuex": "^4.0.2"

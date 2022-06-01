@@ -1,5 +1,9 @@
 <template>
-    <div class="container shadow p-3 rounded-1">
+    <div
+        v-if="this.$store.state.colors.length > 0"
+        class="bg-body shadow-lg my-2 rounded-1"
+    >
+        <p class="h5 mb-3 mt-2">Color Family Images</p>
         <div v-for="item in this.$store.state.colors" :key="item.color">
             <div class="row">
                 <div class="col row">
@@ -8,33 +12,53 @@
                         <button
                             @click="deleteColor(item.color)"
                             type="button"
-                            class="btn btn-primary"
+                            class="btn btn-danger"
                         >
-                            Delete
+                            <img
+                                style="width: 30px; height: auto"
+                                src="delete.png"
+                            />
                         </button>
                     </div>
-                    <div class="col">
+                    <div
+                        class="col container border border-secondary mb-4 bg-dark rounded-2"
+                        style="min-height: 250px; min-width: 450px"
+                    >
                         <input
-                            id="file-upload"
+                            id="fileUpload"
                             type="file"
                             multiple
                             @change="uploadImage($event, item.color)"
+                            hidden
                         />
-                        <div v-for="image in item.images" :key="image">
-                            <img
-                                style="max-width: 50px; heigth: auto"
-                                :src="image.url"
-                            />
-                            <button @click="deleteImage(image, item.color)">
-                                +
-                            </button>
+
+                        <button
+                            @click="chooseFiles()"
+                            class="bg-white rounded-1"
+                        >
+                            select a file
+                        </button>
+                        <div
+                            v-for="image in item.images"
+                            :key="image"
+                            style="display: flex"
+                        >
+                            <div>
+                                <img
+                                    style="max-width: 50px; heigth: auto"
+                                    :src="image.url"
+                                />
+                                <button @click="deleteImage(image, item.color)">
+                                    +
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
                 <div class="col">
                     <table class="table">
                         <thead>
-                            <tr>
+                            <tr class="table-secondary">
                                 <th scope="col">#</th>
                                 <th scope="col">Size</th>
                                 <th scope="col">Stock Quantity</th>
@@ -43,10 +67,10 @@
                         </thead>
                         <tbody>
                             <tr
-                                v-for="product in item.products"
-                                :key="product.size"
+                                v-for="(product, count) in item.products"
+                                :key="count"
                             >
-                                <th scope="row">{{ product.quantity }}</th>
+                                <th scope="row">{{ count + 1 }}</th>
                                 <td>{{ product.size }}</td>
                                 <td>
                                     <input
@@ -64,9 +88,12 @@
                                             deleteSize(item.color, product.size)
                                         "
                                         type="button"
-                                        class="btn btn-primary"
+                                        class="btn btn-danger"
                                     >
-                                        Delete Size
+                                        <img
+                                            style="width: 30px; height: auto"
+                                            src="delete.png"
+                                        />
                                     </button>
                                 </td>
                             </tr>
@@ -86,6 +113,9 @@ export default {
         };
     },
     methods: {
+        chooseFiles() {
+            document.getElementById("fileUpload").click();
+        },
         deleteColor(item) {
             console.log(this.$store.state.colors);
             this.$store.state.colors = this.$store.state.colors.filter(
@@ -105,9 +135,9 @@ export default {
                 if (this.$store.state.colors[index].color === color) {
                     this.$store.state.colors[
                         index
-                    ].size = this.$store.state.colors[index].size.filter(
-                        (x) => x !== size
-                    );
+                    ].products = this.$store.state.colors[
+                        index
+                    ].products.filter((x) => x.size !== size);
                 }
             }
         },
@@ -147,7 +177,11 @@ export default {
                 index++
             ) {
                 if (this.$store.state.colors[index].color === color) {
-                    this.$store.state.colors[index].images.pop(image);
+                    this.$store.state.colors[
+                        index
+                    ].images = this.$store.state.colors[index].images.filter(
+                        (x) => x !== image
+                    );
                 }
             }
         },

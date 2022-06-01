@@ -1,13 +1,16 @@
 <template>
-    <div class="container shadow p-3 mb-1 rounded-1">
+    <div class="container shadow p-3 rounded-1">
         <p class="text-center">
             Add variants when the product have different versions, such as color
             and size.
         </p>
 
-        <div class="mb-3">
+        <div class="mb-3 mt-3">
             <label for="exampleInputEmail1" class="form-label"
-                >Color Family (example=Black,White,Navy etc.)*</label
+                >Color Family (example=Black,White,Navy etc.)<span
+                    class="text-danger"
+                    >*</span
+                ></label
             >
             <select
                 v-model="selected"
@@ -25,7 +28,9 @@
 
         <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label"
-                >Variant (Example=M,L,XL,38,,42 etc.)</label
+                >Variant (Example=M,L,XL,38,,42 etc.)<span class="text-danger"
+                    >*</span
+                ></label
             >
             <div class="row">
                 <div class="col">
@@ -173,7 +178,7 @@
             </div>
         </div>
 
-        <button @click="add" type="submit" class="btn btn-primary">
+        <button @click="add" type="submit" class="btn btn-success">
             Add to color list
         </button>
     </div>

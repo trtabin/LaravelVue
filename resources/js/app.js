@@ -8,6 +8,11 @@ import { createStore } from "vuex";
 const store = createStore({
     state() {
         return {
+            productName: "Panjabi",
+            category: [],
+            videoLink: "",
+            price: "1000",
+            salePrice: "1200",
             colors: [
                 {
                     color: "green",
@@ -19,6 +24,9 @@ const store = createStore({
                     images: [],
                 },
             ],
+            productDetails: "",
+            seoTitle: "",
+            seoDescription: "",
         };
     },
     mutations: {

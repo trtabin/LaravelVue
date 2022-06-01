@@ -1,10 +1,21 @@
 <template>
-    <div class="row m-2">
-        <div class="col"><BasicInfo /></div>
-        <div class="col"><AddVariants /></div>
-    </div>
-    <div class="row m-2">
-        <ColorFamily :colors="colors" />
+    <div class="m-3">
+        <div class="row">
+            <div class="col-7"><BasicInfo /></div>
+            <div class="col-5"><AddVariants /></div>
+        </div>
+        <div class="row">
+            <ColorFamily />
+        </div>
+        <div class="row">
+            <ProductDetails />
+        </div>
+        <div class="row">
+            <SEO />
+        </div>
+        <div>
+            <button @click="submit()" class="btn btn-success">Submit</button>
+        </div>
     </div>
 </template>
 
@@ -12,20 +23,20 @@
 import BasicInfo from "./component/BasicInfo";
 import AddVariants from "./component/AddVariants";
 import ColorFamily from "./component/ColorFamily";
+import ProductDetails from "./component/ProductDetails";
+import SEO from "./component/SEO";
 export default {
-    data() {
-        return {
-            colors: [
-                { id: 1, name: "Green" },
-                { id: 2, name: "Yellow" },
-            ],
-        };
-    },
-
     components: {
         BasicInfo,
         AddVariants,
         ColorFamily,
+        ProductDetails,
+        SEO,
+    },
+    methods: {
+        submit() {
+            console.log(this.$store.state);
+        },
     },
 };
 </script>
