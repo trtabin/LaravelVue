@@ -1,5 +1,5 @@
 <template>
-    <div class="container shadow p-3 rounded-1">
+    <div class="container shadow p-3 mb-1 rounded-1">
         <p class="text-center">
             Add variants when the product have different versions, such as color
             and size.
@@ -186,6 +186,7 @@ export default {
             selected: "",
             checkedSizes: [],
             alreadySelected: false,
+            products: [],
         };
     },
     methods: {
@@ -200,15 +201,24 @@ export default {
                 }
             }
             if (this.selected && !this.alreadySelected) {
+                this.checkedSizes.forEach((e) => {
+                    this.products.push({
+                        size: e,
+                        quantity: "",
+                    });
+                });
+                console.log(this.products);
                 this.$store.commit("addColor", {
                     color: this.selected,
-                    size: this.checkedSizes,
+                    products: this.products,
+                    images: [],
                 });
             } else {
                 this.alreadySelected = false;
             }
             this.selected = "";
             this.checkedSizes = [];
+            this.products = [];
             // console.log(this.$store.state.colors);
             // console.log(this.checkedSizes);
         },

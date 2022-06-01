@@ -8,7 +8,17 @@ import { createStore } from "vuex";
 const store = createStore({
     state() {
         return {
-            colors: [{ color: "green", size: ["M", "L"] }],
+            colors: [
+                {
+                    color: "green",
+                    products: [
+                        { size: "XL", quantity: 10 },
+                        { size: "L", quantity: 20 },
+                        { size: "32", quantity: 20 },
+                    ],
+                    images: [],
+                },
+            ],
         };
     },
     mutations: {
