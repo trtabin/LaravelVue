@@ -29,15 +29,8 @@
                             type="file"
                             multiple
                             @change="uploadImage($event, item.color)"
-                            hidden
                         />
 
-                        <button
-                            @click="chooseFiles()"
-                            class="bg-white rounded-1"
-                        >
-                            select a file
-                        </button>
                         <div
                             v-for="image in item.images"
                             :key="image"
@@ -113,9 +106,6 @@ export default {
         };
     },
     methods: {
-        chooseFiles() {
-            document.getElementById("fileUpload").click();
-        },
         deleteColor(item) {
             console.log(this.$store.state.colors);
             this.$store.state.colors = this.$store.state.colors.filter(
@@ -142,17 +132,7 @@ export default {
             }
         },
 
-        uploadImage(e, color) {
-            // let selectedFiles = e.target.files;
-            // for (let i = 0; i < selectedFiles.length; i++) {
-            //     this.productImages.push({
-            //         name: selectedFiles[i].name,
-            //         url: URL.createObjectURL(selectedFiles[i]),
-            //         file: selectedFiles[i],
-            //     });
-            // }
-            // console.log(color);
-
+        async uploadImage(e, color) {
             for (
                 let index = 0;
                 index < this.$store.state.colors.length;
@@ -161,8 +141,11 @@ export default {
                 if (this.$store.state.colors[index].color === color) {
                     let selectedFiles = e.target.files;
                     for (let i = 0; i < selectedFiles.length; i++) {
+                        let formData = new FormData();
+                        formData.set("image", selectedFiles[i]);
+                        const { data } = await axios.post("/upload", formData);
                         this.$store.state.colors[index].images.push({
-                            name: selectedFiles[i].name,
+                            name: data.name,
                             url: URL.createObjectURL(selectedFiles[i]),
                             file: selectedFiles[i],
                         });

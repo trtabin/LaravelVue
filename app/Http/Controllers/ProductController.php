@@ -44,27 +44,6 @@ class ProductController extends Controller
     	$seo->description = Request('seoDescription');
         $seo->product_id = $product->id;
         $seo->save();
-        
-
-        // $variation = new Variation();
-        // $variation->product_id = $product->id;
-        // $variation->color = Request('colors');
-        // $variation->stock = Request('stock');
-
-        // $colors = Request('colors');
-        // foreach($color as $colors){
-        //     $variation = new Variation();
-        //     $variation->product_id = 1;
-        //     $variation->color = $color["color"];
-        //     $variation->stock = $color["products"];
-        //     $variation->save();
-        // }
-
-        
-        // $variation = new Variation();
-        // $variation->product_id = 1;
-        // $variation->color = "green";
-        // $variation->save();
 
         for ($i=0; $i<count(Request('colors')); $i++) {
             $variation = new Variation();
@@ -127,5 +106,21 @@ class ProductController extends Controller
     {
         //
     }
+
+    public function imageStore(Request $request){
+        $path = public_path('tmp/uploads');
+      
+        if (!file_exists($path)) {
+          mkdir($path, 0777, true);
+        }
+      
+        $file = $request->file('image');
+      
+        $name = uniqid() . '_' . trim($file->getClientOriginalName());
+      
+        $file->move($path, $name);
+      
+        return ['name'=>$name];
+      }
 
 }

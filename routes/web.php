@@ -19,3 +19,4 @@ Route::get('/', function () {
 
 
 Route::post('product', [ProductController::class, 'store']);
+Route::post('upload', [ProductController::class, 'imageStore'])->name('upload');

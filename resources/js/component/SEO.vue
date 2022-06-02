@@ -27,7 +27,6 @@
                         class="form-control"
                         id="exampleInputEmail1"
                         aria-describedby="emailHelp"
-                        placeholder="Exclusive punjabi"
                     />
                 </div>
                 <div class="mb-3">
