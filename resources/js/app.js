@@ -4,6 +4,10 @@ import { createApp } from "vue";
 import App from "./App.vue";
 import { createStore } from "vuex";
 
+import Toast from "vue-toastification";
+// Import the CSS or use your own!
+import "vue-toastification/dist/index.css";
+
 // Create a new store instance.
 const store = createStore({
     state() {
@@ -42,4 +46,7 @@ const store = createStore({
     },
 });
 
-createApp(App).use(store).mount("#app");
+const options = {
+    // You can set your default options here
+};
+createApp(App).use(store).use(Toast, options).mount("#app");
