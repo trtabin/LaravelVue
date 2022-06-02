@@ -36,6 +36,14 @@ export default {
     methods: {
         submit() {
             console.log(this.$store.state);
+            axios
+                .post("/product", this.$store.state)
+                .then(function (response) {
+                    console.log(response.data);
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
         },
     },
 };

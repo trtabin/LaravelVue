@@ -22,7 +22,7 @@
                         >SEO Title</label
                     >
                     <input
-                        v-model="this.$store.state.secTitle"
+                        v-model="this.$store.state.seoTitle"
                         type="text"
                         class="form-control"
                         id="exampleInputEmail1"
