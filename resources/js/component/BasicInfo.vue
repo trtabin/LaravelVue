@@ -12,7 +12,7 @@
                 class="form-control"
                 id="exampleInputEmail1"
                 aria-describedby="emailHelp"
-                placeholder="Exclusive punjabi"
+                placeholder="Ex: Exclusive punjabi"
             />
         </div>
 
@@ -23,7 +23,7 @@
                     class="form-select"
                     aria-label="Default select example"
                 >
-                    <option>Select category *</option>
+                    <option value="">Select category</option>
                     <option value="1">One</option>
                     <option value="2">Two</option>
                     <option value="3">Three</option>
@@ -31,7 +31,7 @@
             </div>
             <div class="col">
                 <select class="form-select" aria-label="Default select example">
-                    <option selected>Select sub category *</option>
+                    <option selected>Select sub category</option>
                     <option value="1">One</option>
                     <option value="2">Two</option>
                     <option value="3">Three</option>
@@ -39,7 +39,7 @@
             </div>
             <div class="col">
                 <select class="form-select" aria-label="Default select example">
-                    <option selected>Select sub sub category*</option>
+                    <option selected>Select sub sub category</option>
                     <option value="1">One</option>
                     <option value="2">Two</option>
                     <option value="3">Three</option>

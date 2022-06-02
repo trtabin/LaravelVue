@@ -185,6 +185,8 @@
 </template>
 
 <script>
+import { useToast } from "vue-toastification";
+const toast = useToast();
 export default {
     data() {
         return {
@@ -212,7 +214,8 @@ export default {
                         quantity: "",
                     });
                 });
-                console.log(this.products);
+                // console.log(this.products);
+                toast.success("New color product added.");
                 this.$store.commit("addColor", {
                     color: this.selected,
                     products: this.products,
@@ -220,12 +223,11 @@ export default {
                 });
             } else {
                 this.alreadySelected = false;
+                toast.error("Select a product that is not alreadly selected.");
             }
             this.selected = "";
             this.checkedSizes = [];
             this.products = [];
-            // console.log(this.$store.state.colors);
-            // console.log(this.checkedSizes);
         },
     },
 };

@@ -10,7 +10,9 @@
                     <div class="col">
                         {{ item.color }}
                         <button
-                            @click="deleteColor(item.color)"
+                            @click="
+                                this.$store.commit('deleteColor', item.color)
+                            "
                             type="button"
                             class="btn btn-danger"
                         >
@@ -28,7 +30,12 @@
                             id="fileUpload"
                             type="file"
                             multiple
-                            @change="uploadImage($event, item.color)"
+                            @change="
+                                this.$store.commit('uploadImage', {
+                                    e: $event,
+                                    color: item.color,
+                                })
+                            "
                         />
 
                         <div
@@ -41,7 +48,14 @@
                                     style="max-width: 50px; heigth: auto"
                                     :src="image.url"
                                 />
-                                <button @click="deleteImage(image, item.color)">
+                                <button
+                                    @click="
+                                        this.$store.commit('deleteImage', {
+                                            image: image,
+                                            color: item.color,
+                                        })
+                                    "
+                                >
                                     +
                                 </button>
                             </div>
@@ -72,13 +86,16 @@
                                         class="form-control"
                                         id="exampleInputEmail1"
                                         aria-describedby="emailHelp"
-                                        placeholder="Exclusive punjabi"
+                                        placeholder="0"
                                     />
                                 </td>
                                 <td>
                                     <button
                                         @click="
-                                            deleteSize(item.color, product.size)
+                                            this.$store.commit('deleteSize', {
+                                                color: item.color,
+                                                size: product.size,
+                                            })
                                         "
                                         type="button"
                                         class="btn btn-danger"
@@ -97,77 +114,3 @@
         </div>
     </div>
 </template>
-
-<script>
-export default {
-    data() {
-        return {
-            productImages: [],
-        };
-    },
-    methods: {
-        deleteColor(item) {
-            console.log(this.$store.state.colors);
-            this.$store.state.colors = this.$store.state.colors.filter(
-                (x) => x.color !== item
-            );
-            console.log(this.$store.state.colors);
-
-            // this.$store.commit("deleteColor", item);
-        },
-        deleteSize(color, size) {
-            console.log(color + size);
-            for (
-                let index = 0;
-                index < this.$store.state.colors.length;
-                index++
-            ) {
-                if (this.$store.state.colors[index].color === color) {
-                    this.$store.state.colors[
-                        index
-                    ].products = this.$store.state.colors[
-                        index
-                    ].products.filter((x) => x.size !== size);
-                }
-            }
-        },
-
-        async uploadImage(e, color) {
-            for (
-                let index = 0;
-                index < this.$store.state.colors.length;
-                index++
-            ) {
-                if (this.$store.state.colors[index].color === color) {
-                    let selectedFiles = e.target.files;
-                    for (let i = 0; i < selectedFiles.length; i++) {
-                        let formData = new FormData();
-                        formData.set("image", selectedFiles[i]);
-                        const { data } = await axios.post("/upload", formData);
-                        this.$store.state.colors[index].images.push({
-                            name: data.name,
-                            url: URL.createObjectURL(selectedFiles[i]),
-                            file: selectedFiles[i],
-                        });
-                    }
-                }
-            }
-        },
-        deleteImage(image, color) {
-            for (
-                let index = 0;
-                index < this.$store.state.colors.length;
-                index++
-            ) {
-                if (this.$store.state.colors[index].color === color) {
-                    this.$store.state.colors[
-                        index
-                    ].images = this.$store.state.colors[index].images.filter(
-                        (x) => x !== image
-                    );
-                }
-            }
-        },
-    },
-};
-</script>

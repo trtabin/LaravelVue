@@ -51,9 +51,11 @@ class ProductController extends Controller
             $variation->color = Request('colors')[$i]["color"];
             $variation->save();
 
-            $variation = Variation::latest()->first();
+            
 
             for($j=0; $j<count(Request('colors')[$i]["products"]); $j++){
+                $variation = Variation::latest()->first();
+
                 $stock = new Stock();
                 $stock->variation_id = $variation->id;
                 $stock->size = Request('colors')[$i]["products"][$j]["size"];
@@ -62,6 +64,8 @@ class ProductController extends Controller
             }
 
             for($j=0; $j<count(Request('colors')[$i]["images"]); $j++){
+                $variation = Variation::latest()->first();
+                
                 $image = new Image();
                 $image->variation_id = $variation->id;
                 $image->name = Request('colors')[$i]["images"][$j]["name"];
