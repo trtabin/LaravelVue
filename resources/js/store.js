@@ -1,17 +1,7 @@
 import { createStore } from "vuex";
 import { useToast } from "vue-toastification";
 const toast = useToast();
-let initialState = {
-    productName: "",
-    category: "",
-    videoLink: "",
-    price: "",
-    salePrice: "",
-    colors: [],
-    productDetails: "",
-    seoTitle: "",
-    seoDescription: "",
-};
+
 export const store = createStore({
     state() {
         return {
@@ -79,7 +69,7 @@ export const store = createStore({
         },
         submit(state) {
             console.log(this.state);
-            let value = axios
+            axios
                 .post("/product", this.state)
                 .then(function (response) {
                     toast.success("Product Info Uploaded");

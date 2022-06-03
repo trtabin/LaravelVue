@@ -9,17 +9,17 @@ class Variation extends Model
 {
     use HasFactory;
 
-    public function Image()
+    public function image()
     {
         return $this->hasMany(Image::class);
     }
 
-    public function Product()
+    public function product()
     {
         return $this->belongsTo(Product::class);
     }
 
-    public function Stock()
+    public function stock()
     {
         return $this->hasMany(Stock::class);
     }

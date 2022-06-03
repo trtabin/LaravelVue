@@ -9,7 +9,7 @@ class SEO extends Model
 {
     use HasFactory;
 
-    public function Product()
+    public function product()
     {
         return $this->belongsTo(Product::class);
     }

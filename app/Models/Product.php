@@ -9,12 +9,23 @@ class Product extends Model
 {
     use HasFactory;
 
-    public function SEO() {
+    public function seo() 
+    {
         return $this->hasOne(SEO::class);
     }
 
-    public function Variation()
+    public function variation()
     {
         return $this->hasMany(Variation::class);
+    }
+
+    public function stock() 
+    {
+        return $this->hasManyThrough(Stock::class, Variation::class);
+    }
+
+    public function image() 
+    {
+        return $this->hasManyThrough(Image::class, Variation::class);
     }
 }

@@ -37,27 +37,42 @@
                                 })
                             "
                         />
-
                         <div
-                            v-for="image in item.images"
-                            :key="image"
-                            style="display: flex"
+                            style="display: flex; flex-wrap: wrap; margin: 10px"
                         >
-                            <div>
-                                <img
-                                    style="max-width: 50px; heigth: auto"
-                                    :src="image.url"
-                                />
-                                <button
-                                    @click="
-                                        this.$store.commit('deleteImage', {
-                                            image: image,
-                                            color: item.color,
-                                        })
+                            <div
+                                v-for="image in item.images"
+                                :key="image"
+                                style="margin: 4px"
+                            >
+                                <div
+                                    class="col"
+                                    style="
+                                        display: flex;
+                                        flex-direction: column;
                                     "
                                 >
-                                    +
-                                </button>
+                                    <img
+                                        style="max-width: 50px; heigth: auto"
+                                        :src="image.url"
+                                    />
+                                    <button
+                                        style="
+                                            max-width: 50px;
+                                            min-height: 20px;
+                                        "
+                                        @click="
+                                            this.$store.commit('deleteImage', {
+                                                image: image,
+                                                color: item.color,
+                                            })
+                                        "
+                                    >
+                                        <div style="transform: rotate(45deg)">
+                                            +
+                                        </div>
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     </div>

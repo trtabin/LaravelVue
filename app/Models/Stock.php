@@ -9,7 +9,7 @@ class Stock extends Model
 {
     use HasFactory;
 
-    public function Variation()
+    public function variation()
     {
         return $this->belongsTo(Variation::class);
     }

@@ -13,7 +13,7 @@
         <div class="row">
             <SEO />
         </div>
-        <div>
+        <div class="button_container">
             <button
                 @click="this.$store.commit('submit')"
                 class="btn btn-success"
@@ -41,3 +41,12 @@ export default {
     },
 };
 </script>
+
+<style>
+.button_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+}
+</style>
